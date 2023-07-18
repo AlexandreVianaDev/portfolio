@@ -36,6 +36,9 @@ export const Home = (): JSX.Element => {
       <Header>
         <Container>
           <HeaderContent>
+            <Text as="h2" type="heading2" color="grey4">
+              Sobre mim
+            </Text>
             <Flex>
               <UserImage
                 src={`https://github.com/${userData.githubUser}.png`}
@@ -44,29 +47,39 @@ export const Home = (): JSX.Element => {
                 width={"48px"}
                 height={"48px"}
               />
-              <Text color="grey4">Hello, my name is {userData.nameUser}</Text>
+              <Text color="grey4">
+                Olá, eu sou o{" "}
+                <Text as="span" color="brand1">
+                  {userData.nameUser}
+                </Text>
+              </Text>
             </Flex>
             <Text as="h1" type="heading1" color="grey5">
-            I{" "}
+              Dev{" "}
               <Text as="span" type="heading1" color="brand1">
-                love
+                apaixonado
               </Text>{" "}
-              creating and{" "}
+              em criar{" "}
               <Text as="span" type="heading1" color="brand1">
-                developing
+                soluções
               </Text>{" "}
-              projects
+              digitais
             </Text>
             <Text type="body1" color="grey2">
-              Discover here in this environment, created especially for you, all
-              my projects and technologies
+              Minha jornada mistura a arte do design web com a precisão da
+              medicina veterinária. Agora, sou um{" "}
+              <Text as="span" color="brand1">
+                Desenvolvedor Web Full Stack
+              </Text>
+              , unindo criatividade e habilidades técnicas para construir o
+              futuro da web. No tempo livre gosto de desenvolver jogos como hobby.
             </Text>
             <HeaderButtonsArea>
               <Button as="a" type="primary" href="#projects">
-                See Projects
+                Projetos
               </Button>
               <Button as="a" type="outline" target="_blank" href={portfolioUrl}>
-                See my portfolio source code
+                Código fonte do portfólio
               </Button>
               <Button
                 color="grey5"
@@ -92,12 +105,12 @@ export const Home = (): JSX.Element => {
           <ProjectAreaWrapperColumns>
             <ProjectsAreaSocialMediaMessage>
               <Text as="h2" type="heading4" color="grey4">
-                My projects
+                Meus projetos
               </Text>
               <Text as="p" type="body1" color="grey2">
-                Some of my{" "}
+                Alguns dos meus{" "}
                 <Text as="span" color="brand5">
-                  side projects
+                  projetos
                 </Text>
               </Text>
             </ProjectsAreaSocialMediaMessage>
