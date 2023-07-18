@@ -19,6 +19,7 @@ interface ReposType {
   description: string;
   html_url: string;
   homepage: string;
+  topics: string[];
 }
 
 export const Project = (): JSX.Element => {
@@ -34,6 +35,8 @@ export const Project = (): JSX.Element => {
 
       setRepositories(json);
 
+      console.log(json);
+
       return json;
     };
 
@@ -43,54 +46,105 @@ export const Project = (): JSX.Element => {
   return (
     <>
       {repositories &&
-        repositories?.map?.((repository) => (
-          <ProjectWrapper key={repository.id}>
-            <ProjectTitle
-              as="h2"
-              type="heading3"
-              css={{ marginBottom: "$3" }}
-              color="grey4"
-            >
-              {repository.name}
-            </ProjectTitle>
-
-            <ProjectStack>
-              <Text type="body2" color="grey2">
-                Primary Language:
-              </Text>
-              {repository.language ? (
-                <ProjectStackTech>
-                  <Text color="grey2" type="body2">
-                    {repository.language}
-                  </Text>
-                </ProjectStackTech>
-              ) : (
-                <ProjectStackTech>
-                  <Text color="grey2" type="body2">
-                    Primary language not identified
-                  </Text>
-                </ProjectStackTech>
-              )}
-            </ProjectStack>
-
-            <Text type="body1" color="grey2">
-              {repository.description?.substring(0, 129)}
-            </Text>
-            <ProjectLinks>
-              <ProjectLink target="_blank" href={repository.html_url}>
-                <FaGithub /> Github Code
-              </ProjectLink>
-              {repository.homepage && (
-                <ProjectLink
-                  target="_blank"
-                  href={repository.homepage}
+        repositories?.map?.((repository) => {
+          if (repository.topics.includes("project-for-portfolio")) {
+            return (
+              <ProjectWrapper key={repository.id}>
+                <ProjectTitle
+                  as="h2"
+                  type="heading3"
+                  css={{ marginBottom: "$3" }}
+                  color="grey4"
                 >
-                  <FaShare /> See demo
-                </ProjectLink>
-              )}
-            </ProjectLinks>
-          </ProjectWrapper>
-        ))}
+                  {repository.name}
+                </ProjectTitle>
+
+                <ProjectStack>
+                  <Text type="body2" color="grey2">
+                    Primary Language:
+                  </Text>
+                  {repository.language ? (
+                    <ProjectStackTech>
+                      <Text color="grey2" type="body2">
+                        {repository.language}
+                      </Text>
+                    </ProjectStackTech>
+                  ) : (
+                    <ProjectStackTech>
+                      <Text color="grey2" type="body2">
+                        Primary language not identified
+                      </Text>
+                    </ProjectStackTech>
+                  )}
+                </ProjectStack>
+
+                <Text type="body1" color="grey2">
+                  {repository.description?.substring(0, 129)}
+                </Text>
+                <ProjectLinks>
+                  <ProjectLink target="_blank" href={repository.html_url}>
+                    <FaGithub /> Github Code
+                  </ProjectLink>
+                  {repository.homepage && (
+                    <ProjectLink target="_blank" href={repository.homepage}>
+                      <FaShare /> See demo
+                    </ProjectLink>
+                  )}
+                </ProjectLinks>
+              </ProjectWrapper>
+            );
+          }
+        })}
+      {repositories &&
+        repositories?.map?.((repository) => {
+          if (!repository.topics.includes("project-for-portfolio")) {
+            return (
+              <ProjectWrapper key={repository.id}>
+                <ProjectTitle
+                  as="h2"
+                  type="heading3"
+                  css={{ marginBottom: "$3" }}
+                  color="grey4"
+                >
+                  {repository.name}
+                </ProjectTitle>
+
+                <ProjectStack>
+                  <Text type="body2" color="grey2">
+                    Primary Language:
+                  </Text>
+                  {repository.language ? (
+                    <ProjectStackTech>
+                      <Text color="grey2" type="body2">
+                        {repository.language}
+                      </Text>
+                    </ProjectStackTech>
+                  ) : (
+                    <ProjectStackTech>
+                      <Text color="grey2" type="body2">
+                        Primary language not identified
+                      </Text>
+                    </ProjectStackTech>
+                  )}
+                </ProjectStack>
+
+                <Text type="body1" color="grey2">
+                  {repository.description?.substring(0, 129)}
+                </Text>
+                <ProjectLinks>
+                  <ProjectLink target="_blank" href={repository.html_url}>
+                    <FaGithub /> Github Code
+                  </ProjectLink>
+                  {repository.homepage && (
+                    <ProjectLink target="_blank" href={repository.homepage}>
+                      <FaShare /> See demo
+                    </ProjectLink>
+                  )}
+                </ProjectLinks>
+              </ProjectWrapper>
+            );
+          }
+        })}
     </>
   );
 };
