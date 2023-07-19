@@ -43,12 +43,63 @@ export const Project = (): JSX.Element => {
     fetchData();
   }, []);
 
+  const compareRepo = (repoA: ReposType, repoB: ReposType) => {
+    const priorityA =
+      repoA.topics && repoA.topics.includes("project-for-portfolio");
+    const priorityB =
+      repoB.topics && repoB.topics.includes("project-for-portfolio");
+
+    if (priorityA && !priorityB) {
+      return -1;
+    } else if (!priorityA && priorityB) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+
+  const compareTopics = (topics: string[]) => {
+    const techs = [
+      "react",
+      // "reactjs",
+      "node",
+      // "nodejs",
+      "express",
+      // "expressjs",
+      "python",
+      "django",
+      "django-rest-framework",
+      "postgresql",
+      "mysql",
+      "next",
+      // "nextjs",
+      "nest",
+      // "nestjs",
+      "javascript",
+      "typescript",
+      "styled-components",
+    ];
+
+    const priorityA: string[] = [];
+    const priorityB: string[] = [];
+
+    topics.forEach((topic) => {
+      if (techs.includes(topic)) {
+        priorityA.push(topic);
+      } else {
+        priorityB.push(topic);
+      }
+    });
+
+    return [...priorityA, ...priorityB];
+  };
+
   return (
     <>
       {repositories &&
-        repositories?.map?.((repository) => {
-          if (repository.topics.includes("project-for-portfolio")) {
-            return (
+        repositories.sort(compareRepo)?.map?.((repository) => {
+          return (
+            repository.name != "AlexandreVianaDev" && (
               <ProjectWrapper key={repository.id}>
                 <ProjectTitle
                   as="h2"
@@ -61,18 +112,25 @@ export const Project = (): JSX.Element => {
 
                 <ProjectStack>
                   <Text type="body2" color="grey2">
-                    Primary Language:
+                    Principais Tecnologias
                   </Text>
-                  {repository.language ? (
-                    <ProjectStackTech>
-                      <Text color="grey2" type="body2">
-                        {repository.language}
-                      </Text>
-                    </ProjectStackTech>
+                  {repository.topics ? (
+                    compareTopics(repository.topics).map((topic, index) => {
+                      return (
+                        topic !== "project-for-portfolio" &&
+                        index < 3 && (
+                          <ProjectStackTech>
+                            <Text color="grey2" type="body2">
+                              {topic}
+                            </Text>
+                          </ProjectStackTech>
+                        )
+                      );
+                    })
                   ) : (
                     <ProjectStackTech>
                       <Text color="grey2" type="body2">
-                        Primary language not identified
+                        Nenhum tópico encontrado
                       </Text>
                     </ProjectStackTech>
                   )}
@@ -83,67 +141,17 @@ export const Project = (): JSX.Element => {
                 </Text>
                 <ProjectLinks>
                   <ProjectLink target="_blank" href={repository.html_url}>
-                    <FaGithub /> Github Code
+                    <FaGithub /> Github
                   </ProjectLink>
                   {repository.homepage && (
                     <ProjectLink target="_blank" href={repository.homepage}>
-                      <FaShare /> See demo
+                      <FaShare /> Demo
                     </ProjectLink>
                   )}
                 </ProjectLinks>
               </ProjectWrapper>
-            );
-          }
-        })}
-      {repositories &&
-        repositories?.map?.((repository) => {
-          if (!repository.topics.includes("project-for-portfolio")) {
-            return (
-              <ProjectWrapper key={repository.id}>
-                <ProjectTitle
-                  as="h2"
-                  type="heading3"
-                  css={{ marginBottom: "$3" }}
-                  color="grey4"
-                >
-                  {repository.name}
-                </ProjectTitle>
-
-                <ProjectStack>
-                  <Text type="body2" color="grey2">
-                    Primary Language:
-                  </Text>
-                  {repository.language ? (
-                    <ProjectStackTech>
-                      <Text color="grey2" type="body2">
-                        {repository.language}
-                      </Text>
-                    </ProjectStackTech>
-                  ) : (
-                    <ProjectStackTech>
-                      <Text color="grey2" type="body2">
-                        Primary language not identified
-                      </Text>
-                    </ProjectStackTech>
-                  )}
-                </ProjectStack>
-
-                <Text type="body1" color="grey2">
-                  {repository.description?.substring(0, 129)}
-                </Text>
-                <ProjectLinks>
-                  <ProjectLink target="_blank" href={repository.html_url}>
-                    <FaGithub /> Github Code
-                  </ProjectLink>
-                  {repository.homepage && (
-                    <ProjectLink target="_blank" href={repository.homepage}>
-                      <FaShare /> See demo
-                    </ProjectLink>
-                  )}
-                </ProjectLinks>
-              </ProjectWrapper>
-            );
-          }
+            )
+          );
         })}
     </>
   );
