@@ -78,6 +78,9 @@ export const Project = (): JSX.Element => {
       "javascript",
       "typescript",
       "styled-components",
+      "stitches",
+      "tailwind",
+      "sass",
     ];
 
     const priorityA: string[] = [];
