@@ -42,22 +42,21 @@ export const colors = {
     brand7: {
       color: "$brand5",
     },
+    greybg: {
+      color: "$greybg",
+    },
     grey1: {
       color: "$grey1",
     },
-
     grey2: {
       color: "$grey2",
     },
-
     grey3: {
       color: "$grey3",
     },
-
     grey4: {
       color: "$grey4",
     },
-
     grey5: {
       color: "$grey5",
     },
@@ -81,13 +80,17 @@ export const globalStyles = globalCss({
 });
 
 export const GlobalStyle = ({ children }: GlobalStyleProps): JSX.Element => {
-
   const theme = createTheme({
     colors: {
-      brand1: "#623CEA",
-      brand2: "#311E75",
+      // brand1: "#623CEA",
+      brand1: "#F8204F",
+      // brand2: "#311E75",
+      brand2: "#a11a37",
 
+      // greybg: "#232429",
+      // grey0: "#121214",
       grey0: "#0A0A0B",
+      //grey1: "#232429",
       grey1: "#121214",
       grey2: "#868E96",
       grey3: "#E9ECEF",

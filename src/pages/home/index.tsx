@@ -36,9 +36,6 @@ export const Home = (): JSX.Element => {
       <Header>
         <Container>
           <HeaderContent>
-            <Text as="h2" type="heading2" color="grey4">
-              Sobre mim
-            </Text>
             <Flex>
               <UserImage
                 src={`https://github.com/${userData.githubUser}.png`}
