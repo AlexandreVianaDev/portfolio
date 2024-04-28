@@ -3,9 +3,13 @@ import {
   SiPostgresql,
   SiTypescript,
   SiDjango,
-  SiMongodb,
-  SiRedis,
   SiNestjs,
+  SiFlask,
+  SiJest,
+  SiMysql,
+  SiStyledcomponents,
+  SiPytest,
+  SiSqlite,
 } from "react-icons/si";
 import { FaGit, FaPython } from "react-icons/fa";
 import {
@@ -20,6 +24,10 @@ import {
 
 export const stackData = [
   {
+    title: "React",
+    img: FaReact,
+  },
+  {
     title: "HTML",
     img: FaHtml5,
   },
@@ -28,12 +36,23 @@ export const stackData = [
     img: FaCss3Alt,
   },
   {
-    title: "JS",
+    title: "StyledComponents",
+    img: SiStyledcomponents,
+  },
+  {
+    title: "JavaScript",
     img: FaJs,
   },
-  { title: "TypeScript", img: SiTypescript },
   {
-    title: "Node JS",
+    title: "TypeScript",
+    img: SiTypescript,
+  },
+  {
+    title: "Next.js",
+    img: TbBrandNextjs,
+  },
+  {
+    title: "Node.js",
     img: FaNode,
   },
   {
@@ -41,17 +60,47 @@ export const stackData = [
     img: SiNestjs,
   },
   {
-    title: "React",
-    img: FaReact,
+    title: "Jest",
+    img: SiJest,
   },
-  { title: "Next.js", img: TbBrandNextjs },
-  { title: "Python", img: FaPython },
-  { title: "Django", img: SiDjango },
-  { title: "Git", img: FaGit },
-  { title: "PostgreSQL", img: SiPostgresql },
-  { title: "MongoDB", img: SiMongodb },
-  { title: "Redis", img: SiRedis },
-  { title: "Docker", img: FaDocker },
-
-  { title: "AWS", img: FaAws },
+  {
+    title: "Python",
+    img: FaPython,
+  },
+  {
+    title: "Flask",
+    img: SiFlask,
+  },
+  {
+    title: "Django",
+    img: SiDjango,
+  },
+  {
+    title: "Pytest",
+    img: SiPytest,
+  },
+  {
+    title: "Git",
+    img: FaGit,
+  },
+  {
+    title: "PostgreSQL",
+    img: SiPostgresql,
+  },
+  {
+    title: "MySQL",
+    img: SiMysql,
+  },
+  {
+    title: "SQLite",
+    img: SiSqlite,
+  },
+  {
+    title: "AWS",
+    img: FaAws,
+  },
+  {
+    title: "Docker",
+    img: FaDocker,
+  },
 ];
