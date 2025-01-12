@@ -63,13 +63,11 @@ export const Home = (): JSX.Element => {
               digitais
             </Text>
             <Text type="body1" color="grey2">
-              Minha jornada mistura a arte do design web com a precisão da
-              medicina veterinária. Agora, sou um{" "}
               <Text as="span" color="brand1">
-                Desenvolvedor Web Full Stack
-              </Text>
-              , unindo criatividade e habilidades técnicas para construir o
-              futuro da web. No tempo livre gosto de desenvolver jogos como hobby.
+                Desenvolvedor Web
+              </Text>{" "}
+              com sólida experiência, especializado em soluções escaláveis e
+              performáticas.
             </Text>
             <HeaderButtonsArea>
               <Button as="a" type="primary" href="#projects">
